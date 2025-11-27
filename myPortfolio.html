@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeremiah B. Dela Vega | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- VARIABLES & RESET --- */
+        :root {
+            --bg-dark: #0a0f1d;
+            --bg-card: rgba(20, 27, 45, 0.6);
+            --bg-card-active: rgba(30, 41, 70, 0.8);
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --accent-gradient: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+            --accent-color: #00c6ff;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --section-spacing: 140px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg-dark);
+            /* Subtle grid pattern */
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- HEADER --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 15, 29, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-circle {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--accent-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1rem;
+            color: white;
+            box-shadow: 0 0 20px rgba(0, 198, 255, 0.3);
+        }
+
+        .brand-text h1 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+        }
+
+        .brand-text span {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            position: relative;
+        }
+
+        nav a:hover { color: #fff; }
+
+        /* --- SECTIONS --- */
+        section {
+            padding: var(--section-spacing) 10%;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        /* --- HERO --- */
+        #home {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-glow {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(0, 198, 255, 0.2) 0%, transparent 70%);
+            filter: blur(80px);
+            z-index: -1;
+            animation: pulse 8s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.8); }
+            100% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+        }
+
+        .hero-desc {
+            font-size: 1.4rem;
+            color: var(--text-muted);
+            max-width: 750px;
+            margin-top: 2rem;
+            background: rgba(20, 27, 45, 0.4);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        /* --- TOPICS GRID --- */
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .topic-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 30px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .topic-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 198, 255, 0.4);
+            box-shadow: 0 15px 35px -10px rgba(0, 114, 255, 0.2);
+        }
+
+        /* FIX: Number moved to bottom right to avoid overlap */
+        .topic-number {
+            font-size: 4rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.03); /* Watermark style */
+            position: absolute;
+            bottom: -5px;
+            right: 15px;
+            z-index: 0;
+            line-height: 1;
+            pointer-events: none; /* Allows clicking through it */
+        }
+
+        .topic-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .topic-title-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .topic-icon-indicator {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+
+        .topic-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .topic-toggle {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            transition: 0.4s ease;
+        }
+
+        .topic-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            color: var(--text-muted);
+            font-size: 1rem;
+            opacity: 0;
+            transform: translateY(10px);
+            position: relative;
+            z-index: 1; /* Ensures text is above the watermark number */
+        }
+
+        /* Active State */
+        .topic-card.active {
+            background: var(--bg-card-active);
+            border-color: var(--accent-color);
+        }
+
+        .topic-card.active .topic-content {
+            max-height: 200px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .topic-card.active .topic-toggle {
+            transform: rotate(135deg);
+            color: #fff;
+        }
+
+        /* --- ACTIVITIES --- */
+        .activities-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+        }
+
+        .activity-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 35px 30px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            transition: 0.3s;
+        }
+        
+        .activity-card:hover {
+            border-color: var(--accent-color);
+             transform: translateY(-5px);
+        }
+
+        .activity-meta { margin-bottom: 30px; }
+
+        .tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            background: rgba(0, 198, 255, 0.15);
+            color: var(--accent-color);
+            padding: 6px 12px;
+            border-radius: 30px;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .activity-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .download-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 15px;
+            background: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--text-main);
+            border-radius: 12px;
+            font-weight: 700;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 0%; height: 100%;
+            background: var(--accent-gradient);
+            transition: 0.3s ease-in-out;
+            z-index: -1;
+        }
+
+        .download-btn:hover { border-color: transparent; }
+        .download-btn:hover::before { width: 100%; }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 5rem 10%;
+            background: #050810;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .footer-sub { color: var(--text-muted); margin-bottom: 3rem; }
+        .copy { font-size: 0.9rem; color: #475569; }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            :root { --section-spacing: 100px; }
+            .section-title { font-size: 2.2rem; }
+            header { flex-direction: column; gap: 1.5rem; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand">
+            <div class="logo-circle">JB</div>
+            <div class="brand-text">
+                <h1>Jeremiah B. Dela Vega</h1>
+                <span>IV-BCSAD</span>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#topics">Topics</a></li>
+                <li><a href="#activities">Activities</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <div class="hero-glow"></div>
+            <h2 class="section-title">Developer Portfolio</h2>
+            <div class="hero-desc">
+                <p>"I focus on building reliable and scalable applications, always aiming to create clean and efficient solutions. As a college student studying app development, I enjoy solving technical challenges and turning ideas into functional products that can make a real impact."</p>
+            </div>
+        </section>
+
+        <section id="topics">
+            <div class="section-header">
+                <h2 class="section-title">Topics</h2>
+            </div>
+            
+            <div class="topics-grid">
+                
+                <div class="topic-card" onclick="toggleCard(this)">
+                    <span class="topic-number">01</span>
+                    <div class="topic-header">
+                        <div class="topic-title-wrap">
+                            <span class="topic-icon-indicator">>_</span>
+                            <div class="topic-title">REST API</div>
+                        </div>
+                        <div class="topic-toggle">+</div>
+                    </div>
+                    <div class="topic-content">
+                        Architecture style for designing networked applications using HTTP requests. Focuses on scalability and uniform interfaces.
+                    </div>
+                </div>
+
+                <div class="topic-card" onclick="toggleCard(this)">
+                    <span class="topic-number">02</span>
+                    <div class="topic-header">
+                        <div class="topic-title-wrap">
+                            <span class="topic-icon-indicator">>_</span>
+                            <div class="topic-title">Map Reduce</div>
+                        </div>
+                        <div class="topic-toggle">+</div>
+                    </div>
+                    <div class="topic-content">
+                        A programming model for processing and generating big data sets with a parallel, distributed algorithm on a cluster.
+                    </div>
+                </div>
+
+                <div class="topic-card" onclick="toggleCard(this)">
+                    <span class="topic-number">03</span>
+                    <div class="topic-header">
+                        <div class="topic-title-wrap">
+                            <span class="topic-icon-indicator">>_</span>
+                            <div class="topic-title">AWS / VM Instances</div>
+                        </div>
+                        <div class="topic-toggle">+</div>
+                    </div>
+                    <div class="topic-content">
+                        Management of Virtual computing environments on Amazon Web Services (EC2) to run scalable applications.
+                    </div>
+                </div>
+
+                <div class="topic-card" onclick="toggleCard(this)">
+                    <span class="topic-number">04</span>
+                    <div class="topic-header">
+                        <div class="topic-title-wrap">
+                            <span class="topic-icon-indicator">>_</span>
+                            <div class="topic-title">Cloud Native</div>
+                        </div>
+                        <div class="topic-toggle">+</div>
+                    </div>
+                    <div class="topic-content">
+                        Building and running applications that exploit the advantages of the cloud computing delivery model.
+                    </div>
+                </div>
+
+                <div class="topic-card" onclick="toggleCard(this)">
+                    <span class="topic-number">05</span>
+                    <div class="topic-header">
+                        <div class="topic-title-wrap">
+                            <span class="topic-icon-indicator">>_</span>
+                            <div class="topic-title">DevOps Persona</div>
+                        </div>
+                        <div class="topic-toggle">+</div>
+                    </div>
+                    <div class="topic-content">
+                        Understanding the roles, responsibilities, culture, and mindset required for effective DevOps implementation.
+                    </div>
+                </div>
+
+                <div class="topic-card" onclick="toggleCard(this)">
+                    <span class="topic-number">06</span>
+                    <div class="topic-header">
+                        <div class="topic-title-wrap">
+                            <span class="topic-icon-indicator">>_</span>
+                            <div class="topic-title">Docker</div>
+                        </div>
+                        <div class="topic-toggle">+</div>
+                    </div>
+                    <div class="topic-content">
+                        Platform for developing, shipping, and running applications inside lightweight, portable containers.
+                    </div>
+                </div>
+
+                <div class="topic-card" onclick="toggleCard(this)">
+                    <span class="topic-number">07</span>
+                    <div class="topic-header">
+                        <div class="topic-title-wrap">
+                            <span class="topic-icon-indicator">>_</span>
+                            <div class="topic-title">Cont. vs Virtualization</div>
+                        </div>
+                        <div class="topic-toggle">+</div>
+                    </div>
+                    <div class="topic-content">
+                        Technical comparison between OS-level virtualization (Containers) and Hardware-level virtualization (VMs).
+                    </div>
+                </div>
+
+                <div class="topic-card" onclick="toggleCard(this)">
+                    <span class="topic-number">08</span>
+                    <div class="topic-header">
+                        <div class="topic-title-wrap">
+                            <span class="topic-icon-indicator">>_</span>
+                            <div class="topic-title">Kubernetes</div>
+                        </div>
+                        <div class="topic-toggle">+</div>
+                    </div>
+                    <div class="topic-content">
+                        Open-source system for automating deployment, scaling, and management of containerized applications.
+                    </div>
+                </div>
+
+                <div class="topic-card" onclick="toggleCard(this)">
+                    <span class="topic-number">09</span>
+                    <div class="topic-header">
+                        <div class="topic-title-wrap">
+                            <span class="topic-icon-indicator">>_</span>
+                            <div class="topic-title">Terraform</div>
+                        </div>
+                        <div class="topic-toggle">+</div>
+                    </div>
+                    <div class="topic-content">
+                        Infrastructure as Code (IaC) tool for building, changing, and versioning infrastructure safely.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="activities">
+            <div class="section-header">
+                <h2 class="section-title">Activities</h2>
+            </div>
+            <div class="activities-container">
+                <div class="activity-card">
+                    <div class="activity-meta">
+                        <span class="tag">Assignment #1</span>
+                        <div class="activity-name">REST API Documentation</div>
+                    </div>
+                    <a href="#" class="download-btn" download>Download PDF Asset</a>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-meta">
+                        <span class="tag">Assignment #2</span>
+                        <div class="activity-name">AWS Setup Guide</div>
+                    </div>
+                    <a href="#" class="download-btn" download>Download PDF Asset</a>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-meta">
+                        <span class="tag">Assignment #3</span>
+                        <div class="activity-name">Docker Study Plan</div>
+                    </div>
+                    <a href="#" class="download-btn" download>Download PDF Asset</a>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-meta">
+                        <span class="tag">Assignment #4</span>
+                        <div class="activity-name">Virt vs Cont Report</div>
+                    </div>
+                    <a href="#" class="download-btn" download>Download PDF Asset</a>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-meta">
+                        <span class="tag">Assignment #5</span>
+                        <div class="activity-name">Kubernetes Home Lab</div>
+                    </div>
+                    <a href="#" class="download-btn" download>Download PDF Asset</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-logo">JEREMIAH B. DELA VEGA</div>
+        <div class="footer-sub">IV-BCSAD // Full Stack Developer</div>
+        <span class="copy">&copy; 2025 All Rights Reserved.</span>
+    </footer>
+
+    <script>
+        function toggleCard(element) {
+            element.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
