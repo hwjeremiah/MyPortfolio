@@ -20,17 +20,11 @@
             --section-spacing: 140px;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
 
         body {
             background-color: var(--bg-dark);
-            /* Subtle grid pattern */
             background-image: 
                 linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
@@ -46,328 +40,202 @@
 
         /* --- HEADER --- */
         header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(10, 15, 29, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-color);
-            z-index: 1000;
+            position: fixed; top: 0; width: 100%; padding: 1rem 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(10, 15, 29, 0.85); backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color); z-index: 1000;
         }
 
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
+        .brand { display: flex; align-items: center; gap: 15px; }
         .logo-circle {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: var(--accent-gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 1rem;
-            color: white;
+            width: 45px; height: 45px; border-radius: 50%;
+            background: var(--accent-gradient); display: flex; align-items: center;
+            justify-content: center; font-weight: 800; font-size: 1rem; color: white;
             box-shadow: 0 0 20px rgba(0, 198, 255, 0.3);
         }
-
-        .brand-text h1 {
-            font-size: 1.1rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            text-transform: uppercase;
-        }
-
-        .brand-text span {
-            font-size: 0.85rem;
-            color: var(--accent-color);
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
-
-        nav ul {
-            display: flex;
-            gap: 2.5rem;
-        }
-
-        nav a {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            position: relative;
-        }
-
+        .brand-text h1 { font-size: 1.1rem; font-weight: 800; text-transform: uppercase; }
+        .brand-text span { font-size: 0.85rem; color: var(--accent-color); font-weight: 600; }
+        
+        nav ul { display: flex; gap: 2.5rem; }
+        nav a { font-size: 0.95rem; font-weight: 600; color: var(--text-muted); }
         nav a:hover { color: #fff; }
 
         /* --- SECTIONS --- */
-        section {
-            padding: var(--section-spacing) 10%;
+        section { padding: var(--section-spacing) 10%; position: relative; }
+        .section-header { text-align: center; margin-bottom: 5rem; }
+        .section-title {
+            font-size: 3rem; font-weight: 800; letter-spacing: -1.5px;
+            background: var(--accent-gradient); -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; display: inline-block;
+        }
+
+        /* --- HERO (UPDATED FOR IMAGE) --- */
+        #home { 
+            min-height: 90vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+        }
+
+        .hero-container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            max-width: 1200px;
+            z-index: 2;
+        }
+
+        /* Profile Image Styles */
+        .profile-frame {
+            flex-shrink: 0;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%; /* Makes it circular */
+            padding: 5px;
+            background: var(--accent-gradient); /* Gradient border */
+            box-shadow: 0 0 50px rgba(0, 198, 255, 0.3);
             position: relative;
         }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 5rem;
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--bg-dark); /* Inner border */
         }
 
-        .section-title {
-            font-size: 3rem;
-            font-weight: 800;
-            letter-spacing: -1.5px;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-        }
-
-        /* --- HERO --- */
-        #home {
-            min-height: 90vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
+        .hero-text-content {
+            text-align: left;
         }
 
         .hero-glow {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(0, 198, 255, 0.2) 0%, transparent 70%);
-            filter: blur(80px);
-            z-index: -1;
-            animation: pulse 8s infinite alternate;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.8); }
-            100% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 800px; height: 800px; background: radial-gradient(circle, rgba(0, 198, 255, 0.15) 0%, transparent 70%);
+            filter: blur(80px); z-index: 1; animation: pulse 8s infinite alternate;
         }
 
         .hero-desc {
-            font-size: 1.4rem;
-            color: var(--text-muted);
-            max-width: 750px;
-            margin-top: 2rem;
-            background: rgba(20, 27, 45, 0.4);
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 20px;
-            border: 1px solid var(--border-color);
+            font-size: 1.25rem; color: var(--text-muted); margin-top: 1.5rem;
+            line-height: 1.8;
         }
 
-        /* --- TOPICS GRID --- */
-        .topics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
+        /* --- TOPICS --- */
+        .topics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; }
         .topic-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 30px;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
+            background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px;
+            padding: 30px; cursor: pointer; transition: all 0.4s ease; position: relative; overflow: hidden; backdrop-filter: blur(10px);
         }
-
-        .topic-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(0, 198, 255, 0.4);
-            box-shadow: 0 15px 35px -10px rgba(0, 114, 255, 0.2);
-        }
-
-        /* FIX: Number moved to bottom right to avoid overlap */
+        .topic-card:hover { transform: translateY(-8px); border-color: rgba(0, 198, 255, 0.4); }
         .topic-number {
-            font-size: 4rem;
-            font-weight: 900;
-            color: rgba(255, 255, 255, 0.03); /* Watermark style */
-            position: absolute;
-            bottom: -5px;
-            right: 15px;
-            z-index: 0;
-            line-height: 1;
-            pointer-events: none; /* Allows clicking through it */
+            font-size: 4rem; font-weight: 900; color: rgba(255, 255, 255, 0.03);
+            position: absolute; bottom: -5px; right: 15px; z-index: 0; line-height: 1; pointer-events: none;
         }
-
-        .topic-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .topic-title-wrap {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .topic-icon-indicator {
-            color: var(--accent-color);
-            font-size: 1.2rem;
-        }
-
-        .topic-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-        }
-
-        .topic-toggle {
-            font-size: 1.5rem;
-            color: var(--accent-color);
-            transition: 0.4s ease;
-        }
-
+        .topic-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; position: relative; z-index: 1; }
+        .topic-title-wrap { display: flex; align-items: center; gap: 10px; }
+        .topic-icon-indicator { color: var(--accent-color); font-size: 1.2rem; }
+        .topic-title { font-size: 1.3rem; font-weight: 700; }
+        .topic-toggle { font-size: 1.5rem; color: var(--accent-color); transition: 0.4s ease; }
         .topic-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.4s ease;
-            color: var(--text-muted);
-            font-size: 1rem;
-            opacity: 0;
-            transform: translateY(10px);
-            position: relative;
-            z-index: 1; /* Ensures text is above the watermark number */
+            max-height: 0; overflow: hidden; transition: all 0.4s ease; color: var(--text-muted);
+            font-size: 1rem; opacity: 0; transform: translateY(10px); position: relative; z-index: 1;
         }
+        .topic-card.active .topic-content { max-height: 200px; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border-color); opacity: 1; transform: translateY(0); }
+        .topic-card.active .topic-toggle { transform: rotate(135deg); color: #fff; }
 
-        /* Active State */
-        .topic-card.active {
-            background: var(--bg-card-active);
-            border-color: var(--accent-color);
-        }
-
-        .topic-card.active .topic-content {
-            max-height: 200px;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border-color);
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .topic-card.active .topic-toggle {
-            transform: rotate(135deg);
-            color: #fff;
-        }
-
-        /* --- ACTIVITIES --- */
-        .activities-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 35px;
-        }
-
+        /* --- ACTIVITIES (Interactive) --- */
+        .activities-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 35px; }
+        
         .activity-card {
-            background: var(--bg-card);
-            border-radius: 20px;
-            padding: 35px 30px;
-            border: 1px solid var(--border-color);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
-            transition: 0.3s;
+            background: var(--bg-card); border-radius: 20px; padding: 35px 30px;
+            border: 1px solid var(--border-color); display: flex; flex-direction: column;
+            justify-content: space-between; height: 100%; transition: 0.3s; cursor: pointer;
         }
-        
-        .activity-card:hover {
-            border-color: var(--accent-color);
-             transform: translateY(-5px);
-        }
-
-        .activity-meta { margin-bottom: 30px; }
-
+        .activity-card:hover { border-color: var(--accent-color); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .activity-meta { margin-bottom: 20px; }
         .tag {
-            display: inline-block;
-            font-size: 0.75rem;
-            background: rgba(0, 198, 255, 0.15);
-            color: var(--accent-color);
-            padding: 6px 12px;
-            border-radius: 30px;
-            margin-bottom: 15px;
-            font-weight: 700;
-            text-transform: uppercase;
+            display: inline-block; font-size: 0.75rem; background: rgba(0, 198, 255, 0.15);
+            color: var(--accent-color); padding: 6px 12px; border-radius: 30px; margin-bottom: 15px; font-weight: 700; text-transform: uppercase;
         }
-
-        .activity-name {
-            font-size: 1.4rem;
-            font-weight: 700;
-            line-height: 1.3;
-        }
-
-        .download-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            padding: 15px;
-            background: transparent;
-            border: 2px solid var(--accent-color);
-            color: var(--text-main);
-            border-radius: 12px;
-            font-weight: 700;
+        .activity-name { font-size: 1.4rem; font-weight: 700; line-height: 1.3; }
+        
+        /* View Button Styling */
+        .view-btn {
+            margin-top: auto;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
             transition: 0.3s;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
+        }
+        .activity-card:hover .view-btn {
+            background: var(--accent-gradient);
+            color: white;
+            border-color: transparent;
+        }
+
+        /* --- MODAL (POPUP) --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px);
+            z-index: 2000; opacity: 0; visibility: hidden; transition: 0.3s ease;
+            display: flex; justify-content: center; align-items: center; padding: 20px;
+        }
+        .modal-overlay.open { opacity: 1; visibility: visible; }
+        
+        .modal-content {
+            background: #0f172a; width: 100%; max-width: 800px;
+            border-radius: 20px; border: 1px solid var(--border-color);
+            overflow: hidden; transform: scale(0.9); transition: 0.3s ease; 
+            display: flex; flex-direction: column;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+        .modal-overlay.open .modal-content { transform: scale(1); }
+
+        .modal-header {
+            padding: 20px 30px; border-bottom: 1px solid var(--border-color);
+            display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.02);
+        }
+        .modal-title { font-size: 1.2rem; font-weight: 700; color: white; }
+        .close-modal {
+            background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer;
+        }
+        .close-modal:hover { color: #fff; }
+
+        .modal-body { padding: 30px; text-align: center; }
+        
+        .preview-container {
+            width: 100%; height: 350px; background: #050810;
+            margin-bottom: 25px; border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            border: 1px dashed var(--border-color); overflow: hidden;
+        }
+        .preview-image { 
+            max-width: 100%; max-height: 100%; object-fit: contain; 
+            display: none; /* Hidden by default until JS loads it */
         }
         
-        .download-btn::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 0%; height: 100%;
-            background: var(--accent-gradient);
-            transition: 0.3s ease-in-out;
-            z-index: -1;
+        .modal-download-btn {
+            display: inline-block; padding: 15px 40px; background: var(--accent-gradient);
+            color: white; font-weight: 700; border-radius: 8px; text-transform: uppercase; letter-spacing: 1px;
+            margin-top: 10px;
         }
-
-        .download-btn:hover { border-color: transparent; }
-        .download-btn:hover::before { width: 100%; }
+        .modal-download-btn:hover { box-shadow: 0 0 20px rgba(0, 198, 255, 0.5); }
 
         /* --- FOOTER --- */
-        footer {
-            padding: 5rem 10%;
-            background: #050810;
-            text-align: center;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .footer-logo {
-            font-size: 1.8rem;
-            font-weight: 900;
-            margin-bottom: 0.5rem;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
+        footer { padding: 5rem 10%; background: #050810; text-align: center; border-top: 1px solid var(--border-color); }
+        .footer-logo { font-size: 1.8rem; font-weight: 900; margin-bottom: 0.5rem; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .footer-sub { color: var(--text-muted); margin-bottom: 3rem; }
         .copy { font-size: 0.9rem; color: #475569; }
 
-        /* Mobile */
-        @media (max-width: 768px) {
-            :root { --section-spacing: 100px; }
+        @media (max-width: 900px) {
+            .hero-container { flex-direction: column; text-align: center; gap: 30px; }
+            .hero-text-content { text-align: center; }
+            .profile-frame { width: 200px; height: 200px; }
             .section-title { font-size: 2.2rem; }
             header { flex-direction: column; gap: 1.5rem; }
-            nav ul { flex-wrap: wrap; justify-content: center; }
+            .preview-container { height: 200px; }
         }
     </style>
 </head>
@@ -393,9 +261,18 @@
     <main>
         <section id="home">
             <div class="hero-glow"></div>
-            <h2 class="section-title">Developer Portfolio</h2>
-            <div class="hero-desc">
-                <p>"I focus on building reliable and scalable applications, always aiming to create clean and efficient solutions. As a college student studying app development, I enjoy solving technical challenges and turning ideas into functional products that can make a real impact."</p>
+            
+            <div class="hero-container">
+                <div class="profile-frame">
+                    <img src="joseMarieGab.png" alt="Jeremiah Dela Vega" class="profile-img">
+                </div>
+
+                <div class="hero-text-content">
+                    <h2 class="section-title">Developer Portfolio</h2>
+                    <div class="hero-desc">
+                        <p>"I focus on building reliable and scalable applications, always aiming to create clean and efficient solutions. As a college student studying app development, I enjoy solving technical challenges and turning ideas into functional products that can make a real impact."</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -405,131 +282,85 @@
             </div>
             
             <div class="topics-grid">
-                
                 <div class="topic-card" onclick="toggleCard(this)">
                     <span class="topic-number">01</span>
                     <div class="topic-header">
-                        <div class="topic-title-wrap">
-                            <span class="topic-icon-indicator">>_</span>
-                            <div class="topic-title">REST API</div>
-                        </div>
+                        <div class="topic-title-wrap"><span class="topic-icon-indicator">>_</span><div class="topic-title">REST API</div></div>
                         <div class="topic-toggle">+</div>
                     </div>
-                    <div class="topic-content">
-                        Architecture style for designing networked applications using HTTP requests. Focuses on scalability and uniform interfaces.
-                    </div>
+                    <div class="topic-content">Architecture style for designing networked applications using HTTP requests.</div>
                 </div>
 
                 <div class="topic-card" onclick="toggleCard(this)">
                     <span class="topic-number">02</span>
                     <div class="topic-header">
-                        <div class="topic-title-wrap">
-                            <span class="topic-icon-indicator">>_</span>
-                            <div class="topic-title">Map Reduce</div>
-                        </div>
+                        <div class="topic-title-wrap"><span class="topic-icon-indicator">>_</span><div class="topic-title">Map Reduce</div></div>
                         <div class="topic-toggle">+</div>
                     </div>
-                    <div class="topic-content">
-                        A programming model for processing and generating big data sets with a parallel, distributed algorithm on a cluster.
-                    </div>
+                    <div class="topic-content">A programming model for processing and generating big data sets.</div>
                 </div>
 
                 <div class="topic-card" onclick="toggleCard(this)">
                     <span class="topic-number">03</span>
                     <div class="topic-header">
-                        <div class="topic-title-wrap">
-                            <span class="topic-icon-indicator">>_</span>
-                            <div class="topic-title">AWS / VM Instances</div>
-                        </div>
+                        <div class="topic-title-wrap"><span class="topic-icon-indicator">>_</span><div class="topic-title">AWS / VM</div></div>
                         <div class="topic-toggle">+</div>
                     </div>
-                    <div class="topic-content">
-                        Management of Virtual computing environments on Amazon Web Services (EC2) to run scalable applications.
-                    </div>
+                    <div class="topic-content">Management of Virtual computing environments on Amazon Web Services.</div>
                 </div>
 
                 <div class="topic-card" onclick="toggleCard(this)">
                     <span class="topic-number">04</span>
                     <div class="topic-header">
-                        <div class="topic-title-wrap">
-                            <span class="topic-icon-indicator">>_</span>
-                            <div class="topic-title">Cloud Native</div>
-                        </div>
+                        <div class="topic-title-wrap"><span class="topic-icon-indicator">>_</span><div class="topic-title">Cloud Native</div></div>
                         <div class="topic-toggle">+</div>
                     </div>
-                    <div class="topic-content">
-                        Building and running applications that exploit the advantages of the cloud computing delivery model.
-                    </div>
+                    <div class="topic-content">Building and running applications that exploit the advantages of the cloud.</div>
                 </div>
-
+                
                 <div class="topic-card" onclick="toggleCard(this)">
                     <span class="topic-number">05</span>
                     <div class="topic-header">
-                        <div class="topic-title-wrap">
-                            <span class="topic-icon-indicator">>_</span>
-                            <div class="topic-title">DevOps Persona</div>
-                        </div>
+                        <div class="topic-title-wrap"><span class="topic-icon-indicator">>_</span><div class="topic-title">DevOps</div></div>
                         <div class="topic-toggle">+</div>
                     </div>
-                    <div class="topic-content">
-                        Understanding the roles, responsibilities, culture, and mindset required for effective DevOps implementation.
-                    </div>
+                    <div class="topic-content">Understanding the roles, responsibilities, culture, and mindset for DevOps.</div>
                 </div>
 
                 <div class="topic-card" onclick="toggleCard(this)">
                     <span class="topic-number">06</span>
                     <div class="topic-header">
-                        <div class="topic-title-wrap">
-                            <span class="topic-icon-indicator">>_</span>
-                            <div class="topic-title">Docker</div>
-                        </div>
+                        <div class="topic-title-wrap"><span class="topic-icon-indicator">>_</span><div class="topic-title">Docker</div></div>
                         <div class="topic-toggle">+</div>
                     </div>
-                    <div class="topic-content">
-                        Platform for developing, shipping, and running applications inside lightweight, portable containers.
-                    </div>
+                    <div class="topic-content">Platform for developing, shipping, and running applications inside containers.</div>
                 </div>
 
                 <div class="topic-card" onclick="toggleCard(this)">
                     <span class="topic-number">07</span>
                     <div class="topic-header">
-                        <div class="topic-title-wrap">
-                            <span class="topic-icon-indicator">>_</span>
-                            <div class="topic-title">Cont. vs Virtualization</div>
-                        </div>
+                        <div class="topic-title-wrap"><span class="topic-icon-indicator">>_</span><div class="topic-title">Cont. vs Virt.</div></div>
                         <div class="topic-toggle">+</div>
                     </div>
-                    <div class="topic-content">
-                        Technical comparison between OS-level virtualization (Containers) and Hardware-level virtualization (VMs).
-                    </div>
+                    <div class="topic-content">Comparison between OS-level virtualization and Hardware-level virtualization.</div>
                 </div>
 
                 <div class="topic-card" onclick="toggleCard(this)">
                     <span class="topic-number">08</span>
                     <div class="topic-header">
-                        <div class="topic-title-wrap">
-                            <span class="topic-icon-indicator">>_</span>
-                            <div class="topic-title">Kubernetes</div>
-                        </div>
+                        <div class="topic-title-wrap"><span class="topic-icon-indicator">>_</span><div class="topic-title">Kubernetes</div></div>
                         <div class="topic-toggle">+</div>
                     </div>
-                    <div class="topic-content">
-                        Open-source system for automating deployment, scaling, and management of containerized applications.
-                    </div>
+                    <div class="topic-content">System for automating deployment, scaling, and management of applications.</div>
                 </div>
 
                 <div class="topic-card" onclick="toggleCard(this)">
                     <span class="topic-number">09</span>
                     <div class="topic-header">
-                        <div class="topic-title-wrap">
-                            <span class="topic-icon-indicator">>_</span>
-                            <div class="topic-title">Terraform</div>
-                        </div>
+                        <div class="topic-title-wrap"><span class="topic-icon-indicator">>_</span><div class="topic-title">Terraform</div></div>
                         <div class="topic-toggle">+</div>
                     </div>
-                    <div class="topic-content">
-                        Infrastructure as Code (IaC) tool for building, changing, and versioning infrastructure safely.
-                    </div>
+                    <div class="topic-content">Infrastructure as Code (IaC) tool for building and versioning infrastructure.</div>
                 </div>
             </div>
         </section>
@@ -539,44 +370,67 @@
                 <h2 class="section-title">Activities</h2>
             </div>
             <div class="activities-container">
-                <div class="activity-card">
+                
+                <div class="activity-card" onclick="openModal('REST API Documentation', 'assign1')">
                     <div class="activity-meta">
                         <span class="tag">Assignment #1</span>
                         <div class="activity-name">REST API Documentation</div>
                     </div>
-                    <a href="#" class="download-btn" download>Download PDF Asset</a>
+                    <div class="view-btn">View Preview & Download</div>
                 </div>
-                <div class="activity-card">
+
+                <div class="activity-card" onclick="openModal('AWS Setup Guide', 'assign2')">
                     <div class="activity-meta">
                         <span class="tag">Assignment #2</span>
                         <div class="activity-name">AWS Setup Guide</div>
                     </div>
-                    <a href="#" class="download-btn" download>Download PDF Asset</a>
+                    <div class="view-btn">View Preview & Download</div>
                 </div>
-                <div class="activity-card">
+
+                <div class="activity-card" onclick="openModal('Docker Study Plan', 'assign3')">
                     <div class="activity-meta">
                         <span class="tag">Assignment #3</span>
                         <div class="activity-name">Docker Study Plan</div>
                     </div>
-                    <a href="#" class="download-btn" download>Download PDF Asset</a>
+                    <div class="view-btn">View Preview & Download</div>
                 </div>
-                <div class="activity-card">
+
+                <div class="activity-card" onclick="openModal('Virt vs Cont Report', 'assign4')">
                     <div class="activity-meta">
                         <span class="tag">Assignment #4</span>
                         <div class="activity-name">Virt vs Cont Report</div>
                     </div>
-                    <a href="#" class="download-btn" download>Download PDF Asset</a>
+                    <div class="view-btn">View Preview & Download</div>
                 </div>
-                <div class="activity-card">
+
+                <div class="activity-card" onclick="openModal('Kubernetes Home Lab', 'assign5')">
                     <div class="activity-meta">
                         <span class="tag">Assignment #5</span>
                         <div class="activity-name">Kubernetes Home Lab</div>
                     </div>
-                    <a href="#" class="download-btn" download>Download PDF Asset</a>
+                    <div class="view-btn">View Preview & Download</div>
                 </div>
+
             </div>
         </section>
     </main>
+
+    <div class="modal-overlay" id="activityModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="modalTitle">Title</div>
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="preview-container">
+                    <img src="" alt="Preview" class="preview-image" id="modalImage">
+                    <div id="noPreviewText" style="color: #94a3b8; display:none;">Preview loading...</div>
+                </div>
+                <p style="color: #94a3b8; margin-bottom: 20px;">Click below to download the full PDF assignment.</p>
+                <a href="#" class="modal-download-btn" id="modalDownload" download>Download PDF</a>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <div class="footer-logo">JEREMIAH B. DELA VEGA</div>
@@ -585,9 +439,56 @@
     </footer>
 
     <script>
+        // Toggle Topics
         function toggleCard(element) {
             element.classList.toggle('active');
         }
+
+        // Modal Logic
+        const modal = document.getElementById('activityModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalImage = document.getElementById('modalImage');
+        const modalDownload = document.getElementById('modalDownload');
+        const noPreviewText = document.getElementById('noPreviewText');
+
+        function openModal(title, fileKey) {
+            // Set Title
+            modalTitle.innerText = title;
+
+            // Set Paths based on the "assignX" key
+            // NOTE: Assumes preview is .jpg and download is .pdf
+            const imagePath = `assets/previews/${fileKey}.jpg`;
+            const filePath = `assets/files/${fileKey}.pdf`;
+
+            // Set Image
+            modalImage.style.display = 'block';
+            modalImage.src = imagePath;
+            noPreviewText.style.display = 'none';
+
+            // Error handling if image doesn't exist
+            modalImage.onerror = function() {
+                modalImage.style.display = 'none';
+                noPreviewText.style.display = 'block';
+                noPreviewText.innerText = "Preview image not found: " + imagePath;
+            };
+
+            // Set Download Link
+            modalDownload.href = filePath;
+
+            // Show Modal
+            modal.classList.add('open');
+        }
+
+        function closeModal() {
+            modal.classList.remove('open');
+        }
+
+        // Close on outside click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
     </script>
 </body>
 </html>
